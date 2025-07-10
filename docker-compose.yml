@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  
+  db:
+    image: postgres:15-alpine
+    container_name: watcher_db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    restart: unless-stopped
+
+  selenium_chrome:
+    image: selenium/standalone-chrome:latest
+    container_name: watcher_selenium
+    shm_size: 2g
+    restart: unless-stopped
+
+  bot:
+    build: .
+    container_name: watcher_bot
+    env_file:
+      - .env
+    command: ["bash", "./entrypoint.sh"]
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+      - selenium_chrome
+    volumes:
+      - ./screenshots:/app/screenshots
+    restart: always
+
+volumes:
+  postgres_data:

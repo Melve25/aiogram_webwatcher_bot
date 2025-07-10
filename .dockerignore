@@ -1,0 +1,29 @@
+# Git
+.git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+
+# Screenshots (если вы не хотите включать их в образ)
+screenshots/
+
+# tests
+tests/
+pytest.ini
+.pytest_cache/

@@ -1,0 +1,27 @@
+[project]
+name = "website-watcher"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "aiogram>=3.20.0.post0",
+    "alembic>=1.16.2",
+    "apscheduler>=3.11.0",
+    "asyncpg>=0.30.0",
+    "dotenv>=0.9.9",
+    "pydantic-settings>=2.10.1",
+    "selenium>=4.34.0",
+    "sqlalchemy[asyncio]>=2.0.41",
+]
+
+[dependency-groups]
+dev = [
+    "aiogram-tests>=1.0.3",
+    "aiosqlite>=0.21.0",
+    "pytest>=8.4.1",
+    "pytest-asyncio>=1.0.0",
+    "pytest-mock>=3.14.1",
+]
+
+
